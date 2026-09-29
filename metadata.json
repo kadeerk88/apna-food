@@ -1,0 +1,8 @@
+{
+  "name": "Remix Alipur Food Marketplace",
+  "description": "Multi-restaurant food delivery platform for Alipur, Punjab with real-time order lifecycle, rider routing, and auditable financial ledger.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

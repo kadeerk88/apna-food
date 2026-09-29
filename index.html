@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function() {
+        try {
+          var _origFetch = typeof window !== 'undefined' && window.fetch ? window.fetch : null;
+          var _activeFetch = _origFetch ? function() {
+            return _origFetch.apply(window, arguments);
+          } : undefined;
+
+          Object.defineProperty(window, 'fetch', {
+            get: function() {
+              return _activeFetch;
+            },
+            set: function(newFetch) {
+              _activeFetch = newFetch;
+            },
+            configurable: true,
+            enumerable: true
+          });
+        } catch (e) {
+          try {
+            if (typeof Window !== 'undefined' && Window.prototype) {
+              var _origProto = Window.prototype.fetch;
+              var _activeProto = _origProto ? function() {
+                return _origProto.apply(window, arguments);
+              } : undefined;
+              Object.defineProperty(Window.prototype, 'fetch', {
+                get: function() {
+                  return _activeProto;
+                },
+                set: function(newFetch) {
+                  _activeProto = newFetch;
+                },
+                configurable: true,
+                enumerable: true
+              });
+            }
+          } catch (err) {}
+        }
+      })();
+    </script>
+    <title>Remix Alipur Food Marketplace</title>
+    <meta name="description" content="Multi-restaurant food delivery platform for Alipur, Punjab with real-time order lifecycle, rider routing, and auditable financial ledger." />
+    <meta property="og:title" content="Remix Alipur Food Marketplace" />
+    <meta property="og:description" content="Multi-restaurant food delivery platform for Alipur, Punjab with real-time order lifecycle, rider routing, and auditable financial ledger." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
